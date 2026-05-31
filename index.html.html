@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Socios de Confianza | 整う暮らし</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Shippori+Mincho:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<style>
+:root{--moss:#4a5c3f;--sage:#7a9068;--mist:#c8d5bf;--linen:#f4f0e8;--cream:#faf8f3;--stone:#9e9589;--ink:#2c2c28;--soft:#6b6b60;--gold:#b8975a;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:'Noto Serif JP',serif;font-weight:300;line-height:1.9;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:var(--mist);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(250,248,243,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(200,213,191,0.3);transition:all 0.4s;}
+.nav-logo img{height:44px;width:auto;}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{font-family:'Cormorant Garamond',serif;font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--soft);text-decoration:none;transition:color 0.3s;}
+.nav-links a:hover{color:var(--moss);}
+#top{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:10rem 4rem 6rem 6rem;}
+.hero-eyebrow{font-family:'Cormorant Garamond',serif;font-size:0.75rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;opacity:0;animation:fadeUp 1s 0.3s ease forwards;}
+.hero-title{font-family:'Shippori Mincho',serif;font-size:clamp(2.1rem,3.5vw,3.4rem);font-weight:500;line-height:1.6;color:var(--moss);margin-bottom:1.5rem;opacity:0;animation:fadeUp 1s 0.5s ease forwards;}
+.hero-title em{font-style:normal;color:var(--gold);}
+.hero-sub{font-size:0.9rem;color:var(--soft);line-height:2.2;max-width:380px;margin-bottom:2.5rem;opacity:0;animation:fadeUp 1s 0.7s ease forwards;}
+.hero-cta{display:inline-flex;align-items:center;gap:0.8rem;font-family:'Cormorant Garamond',serif;font-size:0.85rem;letter-spacing:0.2em;color:var(--moss);text-decoration:none;border-bottom:1px solid var(--mist);padding-bottom:0.3rem;transition:all 0.3s;opacity:0;animation:fadeUp 1s 0.9s ease forwards;}
+.hero-cta:hover{color:var(--gold);gap:1.2rem;}
+.hero-right{background:radial-gradient(ellipse 60% 70% at 60% 50%,rgba(122,144,104,0.12) 0%,transparent 70%),linear-gradient(160deg,var(--linen) 0%,#e8ecdf 50%,var(--mist) 100%);display:flex;align-items:center;justify-content:center;}
+.hero-logo-img{width:min(360px,78%);height:auto;filter:drop-shadow(0 16px 48px rgba(74,92,63,0.13));opacity:0;animation:fadeIn 1.5s 0.8s ease forwards;}
+.scroll-ind{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:var(--stone);font-family:'Cormorant Garamond',serif;font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;animation:float 2.5s ease-in-out infinite;}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--mist),transparent);}
+section{padding:7rem 0;}
+.container{max-width:1080px;margin:0 auto;padding:0 3rem;}
+.sec-label{font-family:'Cormorant Garamond',serif;font-size:0.7rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:1rem;}
+.sec-label::before{content:'';display:block;width:28px;height:1px;background:var(--gold);}
+.sec-title{font-family:'Shippori Mincho',serif;font-size:clamp(1.6rem,2.6vw,2.4rem);font-weight:500;color:var(--moss);line-height:1.6;margin-bottom:1.1rem;}
+.sec-text{font-size:0.91rem;color:var(--soft);line-height:2.2;max-width:560px;}
+.divider{width:55px;height:1px;background:linear-gradient(to right,var(--mist),transparent);margin:1.6rem 0;}
+#about{background:var(--linen);}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.about-visual{position:relative;height:420px;}
+.about-card{position:absolute;background:var(--cream);border:1px solid rgba(200,213,191,0.5);border-radius:2px;padding:2rem;}
+.about-card:nth-child(1){top:0;left:0;width:75%;height:72%;background:linear-gradient(135deg,#e8ecdf,var(--linen));display:flex;align-items:center;justify-content:center;}
+.about-card:nth-child(2){bottom:0;right:0;width:50%;height:50%;box-shadow:0 8px 40px rgba(74,92,63,0.08);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:0.4rem;}
+.about-quote{font-family:'Shippori Mincho',serif;font-size:0.95rem;color:var(--moss);line-height:2;writing-mode:vertical-rl;}
+.about-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--sage);line-height:1;}
+.about-num-label{font-size:0.72rem;color:var(--stone);letter-spacing:0.12em;}
+.pillar-tags{display:flex;flex-direction:column;gap:0.8rem;margin-top:1.8rem;}
+.ptag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.81rem;color:var(--sage);background:rgba(122,144,104,0.08);padding:0.45rem 0.9rem;border-radius:1px;width:fit-content;}
+.ptag.small{font-size:0.76rem;color:var(--stone);background:rgba(158,149,137,0.06);}
+#service{background:var(--cream);}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(200,213,191,0.25);margin-top:3rem;}
+.svc-card{background:var(--cream);padding:2.8rem 2.5rem;position:relative;overflow:hidden;transition:background 0.4s;}
+.svc-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:linear-gradient(to bottom,var(--sage),var(--gold));transition:height 0.45s;}
+.svc-card:hover{background:var(--linen);}
+.svc-card:hover::before{height:100%;}
+.svc-card.main{background:rgba(122,144,104,0.04);}
+.svc-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:rgba(200,213,191,0.6);line-height:1;margin-bottom:1rem;}
+.svc-badge{position:absolute;top:2rem;right:2rem;font-family:'Cormorant Garamond',serif;font-size:0.63rem;letter-spacing:0.18em;color:var(--gold);border:1px solid rgba(184,151,90,0.3);padding:0.25rem 0.6rem;}
+.svc-badge.now{background:rgba(184,151,90,0.08);}
+.svc-name{font-family:'Shippori Mincho',serif;font-size:1.15rem;font-weight:500;color:var(--moss);margin-bottom:0.9rem;line-height:1.7;}
+.svc-desc{font-size:0.84rem;color:var(--soft);line-height:2.1;margin-bottom:1.3rem;}
+.svc-list{display:flex;flex-direction:column;gap:0.3rem;margin-bottom:1.3rem;}
+.svc-list li{font-size:0.81rem;color:var(--soft);list-style:none;padding-left:1rem;position:relative;line-height:1.9;}
+.svc-list li::before{content:'—';position:absolute;left:0;color:var(--mist);font-size:0.72rem;}
+.tag-row{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.tag{font-size:0.69rem;color:var(--sage);border:1px solid rgba(122,144,104,0.3);padding:0.2rem 0.6rem;border-radius:1px;}
+.svc-future{grid-column:1/-1;background:rgba(122,144,104,0.04);padding:2.2rem 2.8rem;border-top:1px solid rgba(200,213,191,0.4);}
+.svc-future-title{font-family:'Shippori Mincho',serif;font-size:0.95rem;color:var(--moss);margin-bottom:0.7rem;font-weight:500;}
+.svc-future-text{font-size:0.84rem;color:var(--soft);line-height:2.1;}
+.coming-band{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;color:var(--stone);background:rgba(158,149,137,0.08);border:1px solid rgba(158,149,137,0.2);padding:0.35rem 0.8rem;border-radius:1px;margin-bottom:1rem;}
+.svc-local-note{font-size:0.78rem;color:var(--moss);background:rgba(122,144,104,0.08);border-left:2px solid var(--sage);padding:0.5rem 0.9rem;margin-bottom:1rem;letter-spacing:0.05em;}
+#journal{background:var(--moss);overflow:hidden;position:relative;}
+#journal .sec-label{color:rgba(200,213,191,0.6);}
+#journal .sec-label::before{background:rgba(200,213,191,0.35);}
+#journal .sec-title{color:var(--linen);}
+.jnl-inner{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center;}
+.jnl-text .sec-text{color:rgba(244,240,232,0.58);}
+.jnl-link{display:inline-flex;align-items:center;gap:0.8rem;margin-top:2rem;font-family:'Cormorant Garamond',serif;font-size:0.85rem;letter-spacing:0.2em;color:var(--mist);text-decoration:none;border-bottom:1px solid rgba(200,213,191,0.3);padding-bottom:0.3rem;transition:all 0.3s;}
+.jnl-link:hover{color:var(--gold);gap:1.2rem;}
+.note-card{background:rgba(255,255,255,0.04);border:1px solid rgba(200,213,191,0.14);padding:2rem;border-radius:3px;position:relative;}
+.note-lbl{position:absolute;top:1.3rem;right:1.3rem;font-family:'Cormorant Garamond',serif;font-size:0.63rem;letter-spacing:0.2em;color:rgba(200,213,191,0.38);}
+.note-img{width:100%;border-radius:3px;margin-bottom:1.1rem;display:block;opacity:0.9;}
+.note-title{font-family:'Shippori Mincho',serif;font-size:0.98rem;color:var(--linen);margin-bottom:0.65rem;font-weight:400;}
+.note-text{font-size:0.81rem;color:rgba(200,213,191,0.52);line-height:1.95;}
+#contact{background:var(--linen);text-align:center;}
+.ct-inner{max-width:520px;margin:0 auto;}
+.ct-body{font-size:0.89rem;color:var(--soft);line-height:2.2;margin-bottom:2.3rem;}
+.ct-form{display:flex;flex-direction:column;gap:0.9rem;}
+.ct-form input,.ct-form textarea{width:100%;background:var(--cream);border:1px solid rgba(200,213,191,0.5);padding:0.95rem 1.1rem;font-family:'Noto Serif JP',serif;font-size:0.84rem;color:var(--ink);outline:none;transition:border-color 0.3s;border-radius:1px;resize:none;}
+.ct-form input:focus,.ct-form textarea:focus{border-color:var(--sage);}
+.ct-form textarea{height:120px;}
+.ct-form input::placeholder,.ct-form textarea::placeholder{color:var(--stone);font-size:0.79rem;}
+.btn-sub{display:flex;align-items:center;justify-content:center;gap:0.8rem;background:var(--moss);color:var(--linen);border:none;padding:1.05rem 3rem;font-family:'Cormorant Garamond',serif;font-size:0.85rem;letter-spacing:0.2em;cursor:pointer;transition:all 0.3s;width:100%;}
+.btn-sub:hover{background:var(--sage);}
+footer{background:var(--ink);padding:3.5rem 3rem 2rem;}
+.ft-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:3.5rem;align-items:start;padding-bottom:2.2rem;border-bottom:1px solid rgba(200,213,191,0.1);margin-bottom:1.8rem;}
+.ft-logo{height:48px;width:auto;opacity:0.68;filter:brightness(0) invert(1);margin-bottom:0.7rem;}
+.ft-tag{font-size:0.76rem;color:rgba(200,213,191,0.38);line-height:1.9;}
+.ft-nav{display:flex;gap:2rem;list-style:none;align-items:center;}
+.ft-nav a{font-family:'Cormorant Garamond',serif;font-size:0.74rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(200,213,191,0.36);text-decoration:none;transition:color 0.3s;}
+.ft-nav a:hover{color:var(--mist);}
+.ft-copy{text-align:center;font-size:0.69rem;color:rgba(200,213,191,0.2);letter-spacing:0.14em;}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.visible{opacity:1;transform:none;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes float{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(7px);}}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+  #top{grid-template-columns:1fr;min-height:auto;}
+  .hero-left{padding:7rem 1.8rem 4rem;}
+  .hero-right{height:280px;}
+  .about-inner,.jnl-inner{grid-template-columns:1fr;gap:3rem;}
+  .about-visual{height:260px;}
+  .svc-grid{grid-template-columns:1fr;}
+  .svc-future{grid-column:1;}
+  .ft-inner{grid-template-columns:1fr;gap:1.8rem;}
+  .ft-nav{flex-wrap:wrap;gap:1rem;}
+  .container{padding:0 1.5rem;}
+  section{padding:5rem 0;}
+}
+</style>
+</head>
+<body>
+<nav id="nb">
+  <a href="#top" class="nav-logo"><img src="https://i.imgur.com/nxHzH4T.png" alt="Socios de Confianza"></a>
+  <ul class="nav-links">
+    <li><a href="#top">Top</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#service">Service</a></li>
+    <li><a href="#journal">Journal</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="top" style="position:relative;">
+  <div class="hero-left">
+    <p class="hero-eyebrow">🌿 Socios de Confianza</p>
+    <h1 class="hero-title">日本本来の<em>整う暮らし</em>を<br>未来へ繋ぐ。</h1>
+    <p class="hero-sub">働き方、健康、食、自然、地方文化を通して、<br>人が自然体で生きられる社会を目指す。<br>北海道の大地から、人・地域・暮らしを整える。</p>
+    <a href="#about" class="hero-cta">想いを知る →</a>
+  </div>
+  <div class="hero-right">
+    <img src="https://i.imgur.com/nxHzH4T.png" alt="logo" class="hero-logo-img">
+  </div>
+  <div class="scroll-ind"><div class="scroll-line"></div><span>scroll</span></div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-visual reveal">
+        <div class="about-card"><p class="about-quote">人・地域・暮らしを整える</p></div>
+        <div class="about-card"><span class="about-num">3</span><span class="about-num-label">つの事業の柱</span></div>
+      </div>
+      <div class="reveal">
+        <p class="sec-label">About</p>
+        <h2 class="sec-title">想い</h2>
+        <div class="divider"></div>
+        <p class="sec-text">現代は働きすぎ・情報過多・孤立・不規則な生活により、本来の健康的な暮らしから離れつつあります。<br><br>だからこそ、<strong>自然・食・人との繋がり・健康・安心して働ける環境</strong>を見直し、日本本来の"整う暮らし"を取り戻したい。<br><br>北海道の自然や文化、日本の食や暮らしを大切にしながら、女性の働き方支援や地域循環にも貢献していきます。</p>
+        <div class="pillar-tags">
+          <span class="ptag">🌿 バックオフィス支援　<small style="font-size:0.72rem;opacity:0.7;">— メイン事業 / 北海道・地方企業を応援</small></span>
+          <span class="ptag small">🌸 女性向けサポート　<small style="font-size:0.7rem;">— 少しずつスタート</small></span>
+          <span class="ptag small">🌏 整える暮らし・地方文化発信　<small style="font-size:0.7rem;">— 準備中</small></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="service">
+  <div class="container">
+    <div class="reveal">
+      <p class="sec-label">Service</p>
+      <h2 class="sec-title">サービス</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="svc-grid">
+
+      <!-- ① バックオフィス支援 メイン -->
+      <div class="svc-card main reveal">
+        <span class="svc-badge now">Main Service</span>
+        <div class="svc-num">01</div>
+        <h3 class="svc-name">バックオフィス支援</h3>
+        <p class="svc-desc">単なる事務代行ではなく、「人が安心して働ける組織づくり」を重視。<br>特に、<strong>北海道をはじめとする地方の小さな企業</strong>が、安心して本業に集中できる環境づくりを大切にサポートします。</p>
+        <ul class="svc-list">
+          <li>経理支援</li>
+          <li>人事労務支援</li>
+          <li>業務整備・業務改善</li>
+          <li>バックオフィス体制構築</li>
+        </ul>
+        <div class="svc-local-note">🌿 北海道・地方の企業を特に応援しています</div>
+        <div class="tag-row">
+          <span class="tag">北海道企業</span>
+          <span class="tag">地方の小さな企業</span>
+          <span class="tag">小規模企業</span>
+          <span class="tag">体制未整備の企業</span>
+        </div>
+      </div>
+
+      <!-- ② 女性向けサポート スタート -->
+      <div class="svc-card reveal">
+        <span class="svc-badge">Starting</span>
+        <div class="svc-num">02</div>
+        <h3 class="svc-name">女性向けサポート</h3>
+        <div class="coming-band">🌱 少しずつスタートしています</div>
+        <p class="svc-desc">「健康的に働き続けられること」を大切に、女性のバックオフィス参入・キャリア形成を小さく丁寧に支援していきます。</p>
+        <ul class="svc-list">
+          <li>働き方・キャリア相談</li>
+          <li>バックオフィス業務サポート</li>
+          <li>在宅・出社の両立支援</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">働き方に悩む女性</span>
+          <span class="tag">在宅と出社の両立</span>
+          <span class="tag">子育て後の再スタート</span>
+        </div>
+      </div>
+
+      <!-- ③ 地方文化発信 準備中 -->
+      <div class="svc-future reveal">
+        <p class="svc-future-title">🌏 整える暮らし・地方文化発信　― 準備中</p>
+        <p class="svc-future-text">北海道の自然・食・文化を発信しながら、地域経済の循環を大切にした活動を少しずつ進めています。和食・発酵・健康的な暮らし・生産者応援など、日本本来の暮らしを未来へ繋いでいきます。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="journal">
+  <div class="container">
+    <div class="jnl-inner">
+      <div class="jnl-text reveal">
+        <p class="sec-label">Journal</p>
+        <h2 class="sec-title">note 導線</h2>
+        <div class="divider" style="background:linear-gradient(to right,rgba(200,213,191,0.4),transparent);"></div>
+        <p class="sec-text">働き方・暮らし・食・北海道の自然文化について、日々の気づきや想いをnoteで綴っています。「整う暮らし」のヒントや、女性の働き方に関するコラムなど、読んでいただける記事をお届けします。</p>
+        <a href="https://note.com" target="_blank" class="jnl-link">note を読む →</a>
+      </div>
+      <div class="reveal">
+        <div class="note-card">
+          <span class="note-lbl">note</span>
+          <img src="https://i.imgur.com/gvFriD9.jpeg" alt="note" class="note-img">
+          <h4 class="note-title">整う暮らしのはじめかた</h4>
+          <p class="note-text">忙しい日々の中でも、小さな「整い」を見つけるためのヒントをお届けします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="ct-inner reveal">
+      <p class="sec-label" style="justify-content:center;">Contact</p>
+      <h2 class="sec-title" style="text-align:center;">お問い合わせ</h2>
+      <div class="divider" style="margin:1.4rem auto;"></div>
+      <p class="ct-body">サービスについてのご質問、ご相談はお気軽にどうぞ。<br>2〜3営業日以内にご連絡いたします。</p>
+      <div class="ct-form">
+        <input type="text" placeholder="お名前">
+        <input type="email" placeholder="メールアドレス">
+        <textarea placeholder="お問い合わせ内容"></textarea>
+        <button class="btn-sub">送信する →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-inner">
+    <div>
+      <img src="https://i.imgur.com/nxHzH4T.png" alt="logo" class="ft-logo">
+      <p class="ft-tag">日本本来の整う暮らしを未来へ繋ぐ<br>人・地域・暮らしを整える</p>
+    </div>
+    <ul class="ft-nav">
+      <li><a href="#top">Top</a></li><li><a href="#about">About</a></li>
+      <li><a href="#service">Service</a></li><li><a href="#journal">Journal</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <p class="ft-copy">© 2025 Socios de Confianza. All rights reserved.</p>
+</footer>
+
+<script>
+const nb=document.getElementById('nb');
+window.addEventListener('scroll',()=>nb.classList.toggle('scrolled',scrollY>50));
+const obs=new IntersectionObserver((e)=>{e.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('visible'),i*80);obs.unobserve(en.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});}));
+</script>
+</body>
+</html>
