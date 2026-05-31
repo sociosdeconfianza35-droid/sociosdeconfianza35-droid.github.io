@@ -257,12 +257,12 @@ footer{background:var(--ink);padding:3.5rem 3rem 2rem;}
       <h2 class="sec-title" style="text-align:center;">お問い合わせ</h2>
       <div class="divider" style="margin:1.4rem auto;"></div>
       <p class="ct-body">サービスについてのご質問、ご相談はお気軽にどうぞ。<br>2〜3営業日以内にご連絡いたします。</p>
-      <div class="ct-form">
-        <input type="text" placeholder="お名前">
-        <input type="email" placeholder="メールアドレス">
-        <textarea placeholder="お問い合わせ内容"></textarea>
-        <button class="btn-sub">送信する →</button>
-      </div>
+      <form class="ct-form" action="https://formspree.io/f/meedwnje" method="POST">
+        <input type="text" name="お名前" placeholder="お名前" required>
+        <input type="email" name="メールアドレス" placeholder="メールアドレス" required>
+        <textarea name="お問い合わせ内容" placeholder="お問い合わせ内容" required></textarea>
+        <button type="submit" class="btn-sub">送信する →</button>
+      </form>
     </div>
   </div>
 </section>
